@@ -225,6 +225,18 @@ CMD ["npm", "start"]
 docker-compose up -d
 ```
 ---
+## URL del proyecto 
+
+https://nodeservercasabene-230131710246.europe-west1.run.app
+
+## Pasarela de pago 
+
+Creada en stripe, conectada a la aplicación, puedes probarla con los siguientes datos de prueba:
+- **Número de tarjeta**: 4242 4242 4242 4242
+- **Fecha de expiración**: Cualquier fecha futura
+- **CVC**: Cualquier número de 3 dígitos
+---
+
 
 
 ## ✍️ Autor
@@ -232,6 +244,8 @@ docker-compose up -d
 Desarrollado por [Oscar Varela](https://github.com/oscarvarela).
 
 ---
+
+
 
 ## 📄 Licencia
 
