@@ -8,7 +8,6 @@ export const createUser = async (req, res) => {
         const findUser = await User.findOne({ email });
         if (findUser) {
             res.status(422).json({ code: 422, msg: "Email is already register" });
-            logger.error({ code: 422, msg: "Email is already register" });
             return
         }
         if (!name || !lastName || !birthdate || !phone || !email || !password) {
