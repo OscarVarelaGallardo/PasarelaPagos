@@ -83,7 +83,8 @@ pruebaCasaBenetti/
 
 ## 📡 Endpoints principales
 
-### `GET /api/v1/users/create`
+
+### `POST /api/v1/users/create`
 🔍 **Descripción**
 Crea un nuevo usuario en la base de datos.
 ### Ejemplo de solicitud
@@ -101,57 +102,67 @@ Content-Type: application/json
     "password":123456
 }
 ```
+### Respuestas:
+    •	201 Created – Usuario creado exitosamente
+    •	400 Bad Request – Datos inválidos
+    •	500 Internal Server Error – Error en el servidor
 
-
-### `GET /api/v1/transactions/users/:userId`
-
-🔍 **Descripción**
-🔍 Obtiene las transacciones asociadas a un usuario específico  
-
-## `GET /api/v1/transactions/
-
-🔍 **Descripción**
-Crea una nueva transacción para un usuario.
+Crear transacciones para el usuario creado:
+### `POST /api/v1/transactions/create`
+🔍 **Descripción
+Crea una nueva transacción asociada a un usuario.
 ### Ejemplo de solicitud
 
 ```json
-POST /api/v1/transactions
+POST /api/v1/transactions/create
 Content-Type: application/json
 
 {
-  "userId": "683e3e1d018e06a9eddf6203",
-  "amount": 100,
-  "type": "credit",
-  "description": "Compra de producto A",
-  "paymentMethodId": "pm_card_mastercard"
+    "userId": "60c72b2f9b1e8c001c8e4d3a",
+    "amount": 100.50,
+    "description": "Compra en supermercado",
+    "date": "2023-10-01"
 }
 ```
-### Ejemplo de respuesta
+### Respuestas
+    •	201 Created – Transacción creada exitosamente
+    •	400 Bad Request – Datos inválidos o usuario no encontrado
+    •	500 Internal Server Error – Error en el servidor
+### `GET /api/v1/transactions/:userId`
+🔍 **Descripción**
+Obtiene todas las transacciones asociadas a un usuario específico.
+### Ejemplo de solicitud
 
-
-
-
-
-Obtiene las transacciones del usuario con `userId`.
-
-#### Respuestas esperadas:
-
-- **200 OK**: Usuario con transacciones.
-- **200 OK + []**: Usuario válido sin transacciones.
-- **404 Not Found**: Usuario no existe.
-- **400 Bad Request**: ID inválido (no es un ObjectId válido).
-
----
-
-#### 📮 Endpoints y ejemplos de uso
-
-🔹 Obtener transacciones por usuario
-``` http
-GET /api/v1/transactions/users/:userId
+```http
+GET /api/v1/transactions/60c72b2f9b1e8c001c8e4d3a
+```
+### Parámetros
+- `userId`: ID del usuario cuyas transacciones se desean consultar.
+### Respuestas:
+    •	200 OK – Retorna un array de transacciones
+    •	400 Bad Request – ID no válido
+    •	404 Not Found – Usuario válido pero sin transacciones
+    •	500 Internal Server Error – Error en el servidor
+### Ejemplo de respuesta exitosa            
+```json
+[
+    {
+        "_id": "60c72b2f9b1e8c001c8e4d3b",
+        "userId": "60c72b2f9b1e8c001c8e4d3a",
+        "amount": 100.50,
+        "description": "Compra en supermercado",
+        "date": "2023-10-01"
+    },
+    {
+        "_id": "60c72b2f9b1e8c001c8e4d3c",
+        "userId": "60c72b2f9b1e8c001c8e4d3a",
+        "amount": 50.00,
+        "description": "Pago de servicios",
+        "date": "2023-10-02"
+    }
+]
 ```
 
-Parámetros:
-	•	userId – ID del usuario en formato MongoDB ObjectId
 
 Respuestas:
 	•	200 OK – Retorna un array de transacciones
