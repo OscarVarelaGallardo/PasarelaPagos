@@ -229,13 +229,18 @@ docker-compose up -d
 
 https://nodeservercasabene-230131710246.europe-west1.run.app
 
-## Pasarela de pago 
+## Stripe  
+Para integrar pagos, se ha configurado Stripe. Asegúrate de tener una cuenta en Stripe y de seguir la documentación para configurar tus claves API.
+## Documentación de Stripe
+https://docs.stripe.com/development
 
-Creada en stripe, conectada a la aplicación, puedes probarla con los siguientes datos de prueba:
-- **Número de tarjeta**: 4242 4242 4242 4242
-- **Fecha de expiración**: Cualquier fecha futura
-- **CVC**: Cualquier número de 3 dígitos
----
+Creada en stripe, conectada a la aplicación y lista para su uso.
+
+## Github del proyecto
+
+https://github.com/OscarVarelaGallardo/pruebaTecnicaCasaBenetti
+
+
 
 
 
