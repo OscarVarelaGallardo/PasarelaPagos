@@ -83,7 +83,54 @@ pruebaCasaBenetti/
 
 ## 📡 Endpoints principales
 
+### `GET /api/v1/users/create`
+🔍 **Descripción**
+Crea un nuevo usuario en la base de datos.
+### Ejemplo de solicitud
+
+```json
+POST /api/v1/users/create
+Content-Type: application/json
+
+{
+    "name":"oscar",
+    "lastName":"varela",
+    "birthdate": "1991-01-16",
+    "phone":5560609210,
+    "email":"oscar_varela_gallardo@hotmail.com",
+    "password":123456
+}
+```
+
+
 ### `GET /api/v1/transactions/users/:userId`
+
+🔍 **Descripción**
+🔍 Obtiene las transacciones asociadas a un usuario específico  
+
+## `GET /api/v1/transactions/
+
+🔍 **Descripción**
+Crea una nueva transacción para un usuario.
+### Ejemplo de solicitud
+
+```json
+POST /api/v1/transactions
+Content-Type: application/json
+
+{
+  "userId": "683e3e1d018e06a9eddf6203",
+  "amount": 100,
+  "type": "credit",
+  "description": "Compra de producto A",
+  "paymentMethodId": "pm_card_mastercard"
+}
+```
+### Ejemplo de respuesta
+
+
+
+
 
 Obtiene las transacciones del usuario con `userId`.
 
@@ -134,32 +181,7 @@ npm test
 Para ejecutar el proyecto en un contenedor Docker, se incluye un archivo `docker-compose.yml` que define los servicios necesarios.
 ### Docker Compose
 ```yaml
-version: '3.8'
-services:
-  app:
-    build: .
-    container_name: casa-benetti-app
-    environment:
-      - PORT=3000
-      - MONGODB_URI=mongodb://mongo:27017/casa-benetti
-    ports:
-      - "3000:3000"
-    depends_on:
-      - mongo
 
-  mongo:
-    image: mongo:6
-    container_name: casa-benetti-mongo
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=admin123
-      - MONGO_INITDB_DATABASE=casa-benetti
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-volumes:
-  mongo-data:
 ```
 
 ## 🐳 Docker Compose
