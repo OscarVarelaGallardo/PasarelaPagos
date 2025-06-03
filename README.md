@@ -130,12 +130,6 @@ npm test
 ```
 ✅ Explicación
 
-Las pruebas están en el directorio `tests/` y cubren los siguientes casos:
-- Respuesta exitosa con transacciones.
-- Respuesta 404 si el usuario existe pero no tiene transacciones.
-- Respuesta 400 si el `userId` es inválido.
-- Manejo de errores de conexión o validación.
----
 ## 🐳 Docker 
 Para ejecutar el proyecto en un contenedor Docker, se incluye un archivo `docker-compose.yml` que define los servicios necesarios.
 ### Docker Compose
