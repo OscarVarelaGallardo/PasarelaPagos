@@ -96,6 +96,35 @@ Obtiene las transacciones del usuario con `userId`.
 
 ---
 
+#### 📮 Endpoints y ejemplos de uso
+
+🔹 Obtener transacciones por usuario
+``` http
+GET /api/v1/transactions/users/:userId
+```
+
+Parámetros:
+	•	userId – ID del usuario en formato MongoDB ObjectId
+
+Respuestas:
+	•	200 OK – Retorna un array de transacciones
+	•	400 Bad Request – ID no válido
+	•	404 Not Found – Usuario válido pero sin transacciones
+	•	500 Internal Server Error – Error en el servidor
+
+#### ✅ Cómo correr las pruebas
+
+Las pruebas están escritas con Jest y Supertest.
+
+Ejecutar todas las pruebas
+Casos cubiertos
+
+```
+	•	✅ Responde 200 con transacciones válidas
+	•	✅ Responde 404 si el usuario existe pero no tiene transacciones
+	•	✅ Responde 400 si el userId es inválido
+	•	✅ Manejo de errores de conexión o validación
+```
 ## ✍️ Autor
 
 Desarrollado por [Oscar Varela](https://github.com/oscarvarela).
