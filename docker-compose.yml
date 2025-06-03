@@ -1,18 +1,18 @@
 version: '3.8'
 
 services:
-  db:
-    image: postgres:15
-    container_name: postgres-container
+  mongo:
+    image: mongo:6
+    container_name: mongo-container
     restart: always
     environment:
-      POSTGRES_USER: casabenetti
-      POSTGRES_PASSWORD: secretcasabenetti
-      POSTGRES_DB: mi_basedatos
+      MONGO_INITDB_ROOT_USERNAME: casabenetti
+      MONGO_INITDB_ROOT_PASSWORD: secretcasabenetti
+      MONGO_INITDB_DATABASE: mi_basedatos
     ports:
-      - "5432:5432"
+      - "27017:27017"
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - mongo-data:/data/db
 
 volumes:
-  postgres-data:
+  mongo-data:
