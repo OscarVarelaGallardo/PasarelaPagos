@@ -129,12 +129,44 @@ Casos cubiertos
 npm test
 ```
 ✅ Explicación
-	•	image: mongo:6: usa MongoDB versión 6.
-	•	MONGO_INITDB_ROOT_USERNAME, MONGO_INITDB_ROOT_PASSWORD: credenciales del usuario administrador.
-	•	MONGO_INITDB_DATABASE: crea una base de datos al iniciar el contenedor.
-	•	ports: expone MongoDB en el puerto 27017 (el default).
-	•	volumes: persistencia de datos en mongo-data.
+
+Las pruebas están en el directorio `tests/` y cubren los siguientes casos:
+- Respuesta exitosa con transacciones.
+- Respuesta 404 si el usuario existe pero no tiene transacciones.
+- Respuesta 400 si el `userId` es inválido.
+- Manejo de errores de conexión o validación.
 ---
+## 🐳 Docker 
+Para ejecutar el proyecto en un contenedor Docker, se incluye un archivo `docker-compose.yml` que define los servicios necesarios.
+### Docker Compose
+```yaml
+version: '3.8'
+services:
+  app:
+    build: .
+    container_name: casa-benetti-app
+    environment:
+      - PORT=3000
+      - MONGODB_URI=mongodb://mongo:27017/casa-benetti
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6
+    container_name: casa-benetti-mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin123
+      - MONGO_INITDB_DATABASE=casa-benetti
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+volumes:
+  mongo-data:
+```
 
 ## 🐳 Docker Compose
 🚀 Para levantar los servicios:
