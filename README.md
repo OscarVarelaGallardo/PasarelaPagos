@@ -125,6 +125,21 @@ Casos cubiertos
 	•	✅ Responde 400 si el userId es inválido
 	•	✅ Manejo de errores de conexión o validación
 ```
+✅ Explicación
+	•	image: mongo:6: usa MongoDB versión 6.
+	•	MONGO_INITDB_ROOT_USERNAME, MONGO_INITDB_ROOT_PASSWORD: credenciales del usuario administrador.
+	•	MONGO_INITDB_DATABASE: crea una base de datos al iniciar el contenedor.
+	•	ports: expone MongoDB en el puerto 27017 (el default).
+	•	volumes: persistencia de datos en mongo-data.
+
+🚀 Para levantar los servicios:
+
+```bash
+docker-compose up -d
+```
+---
+## 🐳 Docker
+
 ## ✍️ Autor
 
 Desarrollado por [Oscar Varela](https://github.com/oscarvarela).
