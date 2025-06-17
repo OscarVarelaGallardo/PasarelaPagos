@@ -1,4 +1,4 @@
-# 🏠 pruebaCasaBenetti
+# 🏠 Pasarela de pagos
 
 Proyecto backend en Node.js para la gestión de transacciones de usuarios, utilizando Express y MongoDB.
 
